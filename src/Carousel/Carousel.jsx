@@ -25,6 +25,7 @@ import image6 from "../images/12.mp4";
 import { Link } from "react-router-dom";
 import NavCnt from "../Components/NavCnt";
 import ImageSlider from "./ImageSlider";
+import Reviews from "../Components/Reviews";
 const slider = [image1, image2, image3, image4, image5, image6];
 
 const Carousel = ({ navIcon, setNavIcon }) => {
@@ -90,7 +91,7 @@ const Carousel = ({ navIcon, setNavIcon }) => {
               }}
               speed={1000}
               pagination={true}
-              modules={[EffectCoverflow, Pagination, Autoplay]}
+              modules={[EffectCoverflow, Autoplay]}
               className="mySwiper"
             >
               {slider.map((slide, index) => (
@@ -167,7 +168,7 @@ const Carousel = ({ navIcon, setNavIcon }) => {
                 watchSlidesProgress={true}
                 speed={700}
                 pagination={true}
-                modules={[Keyboard, Pagination]}
+                modules={[Keyboard]}
                 className="mySwiper1"
               >
                 <SwiperSlide
@@ -217,7 +218,7 @@ const Carousel = ({ navIcon, setNavIcon }) => {
               onClick={goToYtNextSlide}
             />
           </div>
-          <div
+          {/* <div
             style={{
               position: "relative",
               //   // paddingBottom: "56.25%",
@@ -227,7 +228,8 @@ const Carousel = ({ navIcon, setNavIcon }) => {
             }}
             class="elfsight-app-73df6445-cda4-4d6c-b83e-b9a78f156e51"
             data-elfsight-app-lazy
-          ></div>
+          ></div> */}
+          <Reviews />
 
           <div className="location-section merienda-dream1 text-white">
             {/* <h2 className="location-heading">Our Location</h2> */}
