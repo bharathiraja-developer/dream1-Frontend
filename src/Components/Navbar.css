@@ -1,0 +1,75 @@
+.nav-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Spread out the content: logo on the left, icons on the right */
+    width: 100%;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    /* Keeps logo and text together on the left */
+}
+
+.menu-logo {
+    margin-right: 20px;
+    /* Adds space between the logo and text */
+}
+
+.right-icons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* Ensures icons are aligned to the right */
+}
+
+.menu-icon,
+.home-icon {
+    margin-left: 20px;
+    /* Adds space between the icons */
+}
+
+.navbar-container {
+    position: relative;
+    width: 100%;
+    /* Ensures the navbar container takes the full width of the viewport */
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Ensures the navbar takes full width */
+    z-index: 1000;
+    /* Keeps the navbar on top */
+    background-color: #000000;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.btn-close {
+    filter: invert(1);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.offcanvas-body {
+    overflow: hidden;
+}
+
+.menu-container {
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.menu-container.active {
+    opacity: 1;
+    transform: translateY(0);
+}
