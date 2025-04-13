@@ -30,6 +30,7 @@ export default function ImageFolders() {
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     const userInfo = localStorage.getItem("Dream1userInfo");
@@ -42,6 +43,7 @@ export default function ImageFolders() {
     e.preventDefault();
     if (name.trim() && /^[0-9]{10}$/.test(mobile)) {
       try {
+        setSubmitting(true);
         const { data } = await axios.post(
           "https://dream1-backend.onrender.com/add",
           { name, mobile }
@@ -51,12 +53,14 @@ export default function ImageFolders() {
             "Dream1userInfo",
             JSON.stringify({ name, mobile })
           );
+          setSubmitted(true);
+          setSubmitting(false);
           alert("Details submitted successfully!");
         }
       } catch (err) {
+        setSubmitting(false);
         alert("Something went wrong, please try again later.");
       }
-      setSubmitted(true);
     } else {
       alert("Please enter a valid name and 10-digit mobile number.");
     }
@@ -136,9 +140,28 @@ export default function ImageFolders() {
                             pattern="[0-9]{10}"
                           />
                         </div>
-                        <button type="submit" className="btn btn-primary w-100">
-                          Submit
-                        </button>
+                        {submitting ? (
+                          <button
+                            class="btn btn-primary w-100"
+                            type="button"
+                            disabled
+                          >
+                            <span
+                              class="spinner-border spinner-border-sm"
+                              aria-hidden="true"
+                            ></span>
+                            <span role="status" className="ms-3">
+                              Loading...
+                            </span>
+                          </button>
+                        ) : (
+                          <button
+                            type="submit"
+                            className="btn btn-primary w-100"
+                          >
+                            Submit
+                          </button>
+                        )}
                       </form>
 
                       {submitted && (
